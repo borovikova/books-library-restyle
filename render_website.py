@@ -24,9 +24,8 @@ def on_reload() -> None:
     os.makedirs('pages', exist_ok=True)
 
     for i, book_page in enumerate(books, 1):
-        print(book_page)
         rendered_page = template.render(
-            books=book_page
+            books=book_page, total_pages=len(books), current_page=i
         )
 
         with open(os.path.join('pages', f'index{i}.html'), 'w', encoding="utf8") as file:
