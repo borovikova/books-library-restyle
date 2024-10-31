@@ -1,5 +1,5 @@
 import json
-from pprint import pprint
+import os
 
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 from livereload import Server
@@ -18,14 +18,19 @@ def on_reload() -> None:
         books_json = my_file.read()
 
     books = list(
-        chunked(json.loads(books_json), 2)
-    )
-    rendered_page = template.render(
-        books=books
+        chunked(chunked(json.loads(books_json), 2), 20)
     )
 
-    with open('index.html', 'w', encoding="utf8") as file:
-        file.write(rendered_page)
+    os.makedirs('pages', exist_ok=True)
+
+    for i, book_page in enumerate(books, 1):
+        print(book_page)
+        rendered_page = template.render(
+            books=book_page
+        )
+
+        with open(os.path.join('pages', f'index{i}.html'), 'w', encoding="utf8") as file:
+            file.write(rendered_page)
 
 
 on_reload()
