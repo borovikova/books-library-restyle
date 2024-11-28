@@ -5,8 +5,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="/static/bootstrap.min.css">
-    <link rel="icon" type="image/png" href="/media/favicon.png"/>
+    <link rel="stylesheet" href="../static/bootstrap.min.css">
+    <link rel="icon" type="image/png" href="../media/favicon.png"/>
     <title>Библиотека</title>
 </head>
 <body>
@@ -19,7 +19,7 @@
             </li>
             {% else %}
             <li class="page-item">
-                <a class="page-link" href="/pages/index{{current_page - 1}}.html">Назад</a>
+                <a class="page-link" href="../pages/index{{current_page - 1}}.html">Назад</a>
             </li>
             {% endif %}
             {% for page_number in range(1, total_pages + 1) %}
@@ -30,7 +30,7 @@
       </span>
             </li>
             {% else %}
-            <li class="page-item"><a class="page-link" href="/pages/index{{ page_number }}.html">{{ page_number }}</a>
+            <li class="page-item"><a class="page-link" href="../pages/index{{ page_number }}.html">{{ page_number }}</a>
             </li>
             {% endif %}
             {% endfor %}
@@ -40,7 +40,7 @@
             </li>
             {% else %}
             <li class="page-item">
-                <a class="page-link" href="/pages/index{{current_page + 1}}.html">Вперед</a>
+                <a class="page-link" href="../pages/index{{current_page + 1}}.html">Вперед</a>
             </li>
             {% endif %}
         </ul>
@@ -61,7 +61,7 @@
                             {% for genre in book.genres %}
                             <h5><span class="badge badge-secondary">{{ genre }}</span></h5>
                             {% endfor %}
-                            <p class="card-text"><a href="{{ book.book_path|urlencode }}" target="_blank">Читать</a></p>
+                            <p class="card-text"><a href="../{{ book.book_path|urlencode }}"  target="_blank">Читать</a></p>
                         </div>
                     </div>
                 </div>
@@ -71,8 +71,8 @@
     </div>
     {% endfor %}
 </div>
-<script src="/static/jquery-3.5.1.slim.min.js"></script>
-<script src="/static/bootstrap.bundle.min.js"></script>
+<script src="../static/jquery-3.5.1.slim.min.js"></script>
+<script src="../static/bootstrap.bundle.min.js"></script>
 </body>
 </html>
 
